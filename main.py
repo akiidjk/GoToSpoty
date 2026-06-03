@@ -145,13 +145,13 @@ class Config:
         level = getattr(logging, self.log_level.upper(), logging.INFO)
         use_color = not self.no_color and _supports_color()
         self._logger = build_logger("scraper", level, self.log_file, use_color)
+        self._logger_initialized = True
         return self._logger
 
     @property
     def logger(self) -> logging.Logger:
         if not self._logger_initialized:
             self.setup_logger()
-            self._logger_initialized = True
         return self._logger
 
 
