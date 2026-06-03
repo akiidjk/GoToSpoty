@@ -151,6 +151,7 @@ class Config:
     def logger(self) -> logging.Logger:
         if not self._logger_initialized:
             self.setup_logger()
+            self._logger_initialized = True
         return self._logger
 
 
